@@ -1,0 +1,41 @@
+div {
+    border: 5px solid black;
+    width: 200px; 
+    height: 75px;
+    padding: 10px;
+    color: white;
+}
+/*alignment*/
+table {
+    text-align: left;
+}
+/*every other row is colored grey*/
+tr:nth-child(even) {background-color: #f2f2f2}
+
+table, th, td {
+   border: 1px solid black;
+}
+.channel {
+    font-weight: bolder
+}
+.comedy {
+    background-color: #2AFF2C
+}
+.comedy img {
+    width: 50px; height:auto;
+}
+.cartoon {
+    background-color: #E8CC26
+}
+.nature {
+    background-color: #FF7C37
+}
+.drama {
+    background-color: #E826E2
+}
+.sports {
+    background-color: #5E77FF
+}
+.education {
+    background-color: #B90EFF
+}

@@ -1,0 +1,18 @@
+.mynav ul {
+    margin-top: 10px;
+    margin-right: 20px;
+
+}
+.container {
+    margin-top: 50px;
+}
+.bordered {
+    border: solid 3px;
+    height: 300px;
+    margin-top: 75px;
+    background-image: url(/img/cshow.jpg);
+}
+.contact-border {
+    border: solid 3px;
+    height:300px;
+}

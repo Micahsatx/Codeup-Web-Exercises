@@ -1,0 +1,71 @@
+h1 {
+    /*main heading*/
+    color: rgb(0, 178, 36);
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-decoration: underline;
+}
+/*secondary heading*/
+h2  {
+    color: rgb(0, 178, 36);
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-decoration: underline;
+}
+/*font, shadow, shadow color, and background */
+body{
+    background-image: url(/img/grey_wash_wall/grey_wash_wall.png);
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-transform: uppercase;
+    text-shadow: 2px 2px #000000;
+    color: #ffffff;
+}
+/*list number styles, picture position, and size*/
+.food {
+    list-style-type: lower-roman;
+    background-image: url(/img/bacon.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 370px 120px;
+}
+/*handwriting font for quote, border, image*/
+.quote {
+    font-family: 'Swanky and Moo Moo', cursive;
+    font-size: 1.8em;
+    border-style: double;
+    background-image: url(/img/mark_twain.jpg);
+/*background-image: width % might have been easier*/
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 60px 80px;
+    text-align: right;
+}
+ol {
+    list-style-type: lower-roman;
+}
+/*no type. icons inserteed in html file*/
+ul {
+    list-style-type: none;
+}
+/*weird checkerboard table*/
+th {
+    background-color: #17B24;
+    color: white;
+}
+/*colors of table*/
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+/*post office style. all caps.*/
+.questions {
+    text-transform: uppercase;
+    text-shadow: 2px 2px #000000;
+}
+/*hovering over links makes them large. gives terrible background color*/
+a:hover, a:active {
+    background-color: #03ff31;
+    font-size: 2.5em;
+    }
+/*emphasis on uhh and font size*/
+.uhhh {
+    font-size: 2em;
+    color: #000000;
+}

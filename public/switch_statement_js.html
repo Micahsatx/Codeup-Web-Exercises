@@ -1,0 +1,49 @@
+
+<html>
+<head>
+    <title>inline switch color exercise</title>
+</head>
+<body>
+    <script>
+"use script";
+// ignore these lines for now
+// just know that the variable 'color' will end up with a random value from the colors array
+
+
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+var color = colors[Math.floor(Math.random()*colors.length)];
+console.log(color)
+// these are the if statements... if its this color then log this message
+switch (color) {
+    case "red":
+        console.log("Red Pears are my favorite type of pear.");
+        break;
+    case "orange":
+        console.log("I love tangerines of the 'cutie' variety.  they are a nice shade of orange");
+        break;
+    case "yellow":
+        console.log("Pinneapples are the best yellow colored fruit.  watch out for the acidity though!");
+        break;
+    case "green":
+        console.log("Green fruit that i like...? Is Avacado a fruit?  Unrippened Bartlett pears maybe?");
+        break;
+    case "blue":
+        console.log("blueberries are the best blue fruit.  dont even try to think of any other. there is no comparison");
+        break;
+// this is the else message... if it is not one of the above.  then log what is printed below
+    default:
+        console.log("purple / indigo fruits... what are my options? grapes?  no thanks.");
+}
+
+    // todo: create a case statement that will handle every color except indigo and violet
+    // todo: when a color is encountered log a message that tells the color, and an object of that color
+    //       example: Blue is the color of the sky.
+
+    // todo: create a default case that will catch indigo and violet
+    // todo: for the default case, log: I do not know anything by that color.
+
+    </script>
+</body>
+</html>
+
+

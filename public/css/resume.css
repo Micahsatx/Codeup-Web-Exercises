@@ -16,3 +16,19 @@
     border: solid 3px;
     height:300px;
 }
+.socialmedia {
+    padding-top: 91px;
+    float: right;
+}
+#reddit{
+    color:red;
+}
+#twitter{
+    color: lightblue;
+    }
+#linkedin{
+    color: purple;
+}
+#github{
+    color: salmon;
+}

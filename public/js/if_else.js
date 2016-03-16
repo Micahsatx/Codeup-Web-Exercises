@@ -11,7 +11,6 @@ console.log(color);
 
 if(color == "red") {
     message = "Red is the color of a firetruck";
-
 }
 else if(color == "orange") {
     message = "Orange is a color no one should ever wear to a wedding";
@@ -27,9 +26,12 @@ else if(color == "blue") {
 } else {
     message = "Im pretending to not know anything about these colors. But actually i love them!";
 }
-    console.log(message)
-
-message = (color == favorite) ? "This is my favorite" : "at least it is not salmon";
+//  "/n" tells the code to go to a new line
+message  = message + '\n';
+// below is shorthand
+// this += is short hand for writing message = message + (color == favorite)  so in short print the message.  
+// then add onto that message based on the outcome of the ternary code
+message += (color == favorite) ? "This is my favorite" : "at least it is not salmon";
 console.log(message);
 // TODO: When a color is encountered log a message that tells the color, and an object of that color.
 //       Example: Blue is the color of the sky

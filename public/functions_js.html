@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>functions are FUN....demental</title>
+</head>
+<body>
+<script type="text/javascript">
+"use strict"
+
+function sayHello(myNameIs){
+    console.log("Hello from " + myNameIs)
+}
+
+function isOdd(random){
+    return (random % 2 !== 0) ? "is an odd number" : "is NOT an odd number";
+}
+
+var myNameIs= "Micah";
+
+
+var random = Math.floor((Math.random()*100)+1);
+
+
+
+
+
+sayHello(myNameIs);
+console.log(random + " " + isOdd(random));
+
+// todo:
+// Create a function called 'isOdd' that takes a number as a parameter.
+// The function should use the ternary operator to log a message.
+// The log should tell the number passed in and whether it is odd or not.
+
+// todo: Call the function 'isOdd' passing the variable 'random' as a parameter.
+
+
+</script>
+</body>
+</html>

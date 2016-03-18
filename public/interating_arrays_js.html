@@ -19,10 +19,21 @@ console.log(names.length);
 
 // todo:
 // Create log statements that will print each of the names array elements individually.
-console.log("the first name in the array is: " + names[0]);
-console.log("the second name in the array is: " + names[1]);
-console.log("the third name in the array is: " + names[2]);
-console.log("the fourth name in the array is: " + names[3]);
+// this is a for loop to log each individual name
+for (var i = 0; i < names.length; i++){
+    console.log("The name at index " + i + " is: " + names[i]);
+}
+
+// this is a forEach loop.  this is the newer version and should be used over a for loop
+names.forEach(function(element, index, array){
+    console.log("The name at index " + index + " is " + element);
+})
+
+
+// console.log("the first name in the array is: " + names[0]);
+// console.log("the second name in the array is: " + names[1]);
+// console.log("the third name in the array is: " + names[2]);
+// console.log("the fourth name in the array is: " + names[3]);
 
 
 })();

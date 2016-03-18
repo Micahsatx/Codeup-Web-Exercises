@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>extra exercise</title>
+</head>
+<body>
+<script>
+(function(){
+"use strict"
+//list out 10 movies titles in an array with my avorite included in the array
+
+// loop through the console log title, when you get to your favorite movie change the message for that movie "this is my favorite: title"
+
+var movies = ["Star Wars: The Force Awakens", "Contact", "Shawshank Redemption", "Ip Man 2", "Unleashed", "Hero", "Ong Bak"];
+var favorite = "Shawshank Redemption";
+
+movies.forEach(function (movie, index, array){
+
+    if (movie == favorite) {
+        console.log('Shawshank Redemption is probly my All-Time favorite movie')
+    } else { 
+        console.log ("the movie at index " + index + " is " + movie); 
+    }
+
+})
+
+
+})();
+</script>
+
+</body>
+</html>

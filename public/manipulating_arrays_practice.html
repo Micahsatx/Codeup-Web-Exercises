@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title>manipulating arrays</title>
+</head>
+<body>
+<script>
+(function(){
+
+var names = ["Marcus",
+    "Mathew",
+    "Allan",
+    "Boddy",
+    "Lorena",
+    "Poncho",
+    "James",
+    "Nikki"
+];
+// pushing can add something into the array
+names.push("Kristin", "Micah"); //you can have more than one name but it is not best practice
+
+console.log(names);
+
+// pop gets rid of the last thing in the array.. only works on the last element in the array
+var oldName = names.pop();
+
+
+console.log(names);
+console.log(oldName);
+
+names.unshift(oldName);
+console.log(names);
+
+var anotherName = names.shift();
+console.log(names);
+console.log(anotherName);
+
+// finding the index of lorena.. dont forget to start at 0
+console.log(names)
+var lorenaIndex = names.indexOf("Lorena");
+console.log("Lorena was at in(dex " + lorenaIndex);
+
+
+
+// reversing index
+names.reverse();
+console.log(names);
+
+// sorts them alphabetically
+names.sort();
+console.log(names);
+
+
+// make functions very simple and focusd on doing a single thing well.  splicing does takes in several arguements, min 2, and
+// fisrt tell it what index to start at(5). then second the number of elements you want to remove.
+var yetAnotherName = names.splice(5, 3);
+
+console.log(names)
+console.log(yetAnotherName)
+
+// we need to loop over yetAnotherName
+// FOREACH VALUE in yetanothername push that value onto my names array
+// only the element matter for this function which is usually .forEach(function(element, index, array))
+yetAnotherName.forEach(function(newName){
+    names.push(newName);
+});
+console.log(names);
+
+// add three elements with splice()
+// this removes zero, then adds in the 3 new names
+// be very very careful using this... it will cause problems later
+names.splice(3, 0, "Jarod", "Alex", "Daniel");
+
+
+
+})();
+</script>
+</body>
+</html>

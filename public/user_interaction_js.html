@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Interactions</title>
+</head>
+<body>
+<script type="text/javascript"> 
+"use strict"
+
+// todo: Ask the user for their name.
+//       Keep asking if an empty input is provided.
+
+// todo: Show an alert message that welcomes the user based on their input.
+
+// todo: Ask the user if they like pizza.
+//       Based on their answer show a creative alert message.
+
+
+// defining the variable so we know what the persons name is
+var yourName = prompt ;
+  
+// the do while statement.  demands an answer to the question.. does the prompt and while the prompt is not answer, ok'd or cancled.  spits back the i demand an answer line 
+// notice required value = prompt and prompt = yourname
+do{
+    var requiredValue = prompt("what do they call you simpleton? I DEMAND and ANSWER!");
+} while (requiredValue == null || requiredValue == "");
+console.log(requiredValue);
+
+// after they answer it gives a response and includes the varable...
+alert("Well, " + requiredValue + ", woopty doo, welcome to my annoying alert messages!");
+
+// next alert sequence starts here.. firs tthe variable is defined...
+// the variable pizza must be defined.. hence the confirm command
+var pizza = confirm("Do you like pizza?");
+
+// ternary command... if true it does the one on the left if false it does the one on the right
+var message = (pizza) ? "Yeah me too!" : "What? Pizza is to mainstream?  Damn hipster!";
+
+alert(message);
+
+
+
+
+</script>
+</body>
+</html>

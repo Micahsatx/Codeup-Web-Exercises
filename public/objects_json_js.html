@@ -47,13 +47,13 @@
                 "firstName": "Chuck",
                 "lastName": "Palahniuk"
            }
-        },
+        }
     ]
-books.forEach(function (element, index, array){
+books.forEach(function (book, index){
     console.log("Book #: " + index);   
-    console.log(element.title);
-    console.log(element.author.firstName);
-    console.log(element.author.lastName);
+    console.log(book.title);
+    console.log(book.author.firstName);
+    console.log(book.author.lastName);
     console.log("-----------------");
    
 })
@@ -74,7 +74,7 @@ books.forEach(function (element, index, array){
 
 
 
-    })();
+})();
 </script>
 </body>
 </html>

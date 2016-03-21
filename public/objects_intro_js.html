@@ -1,0 +1,79 @@
+<html>
+<head>
+    <title>object intro</title>
+</head>
+<body>
+<script>
+    (function(){
+    "use strict";
+
+
+        
+//         var car = {}; 
+//         // this variable is the most important part.  make, mode, color, year, etc doesnt have to be present in order for the car.honk to work...
+//         car.make = "Toyota";
+// // two different ways of making a property.  top is most common.  bottom is when a value needs to be passed
+//         // car['model'] = "Camry";  ---notice example that explains it below 
+//         car.model = "Camry"
+//         car.color = "gray";
+//         car.year = "2001"
+//         car.type = "sedan";
+
+//     console.log(car);
+//     console.log(car.year);
+//     console.log(car.color);
+//     console.log(car.type);
+
+// // if user put in info similar to below...
+//         // var what = "color";
+//         // console.log(var[color]);
+
+
+// // create a honk method on the car object
+//     car.honk = function () {
+//         alert("Honk! Honk!");
+//     };
+// // there is the method - now execute the command
+//     car.honk();
+
+
+//     car.logMakeModel = function ({
+//         console.log('Car make/model is: ' + this.make + ' ' + this.model);
+//     })
+
+//     car.logMakeModel();
+
+
+var person = {};
+
+// todo:
+// Create person object with firstName and lastName properties (set to your first and last name).
+// var person = todo;
+person.firstName = "Micah";
+person.lastName = "Johnson";
+
+// todo:
+// Add a say hello method to the person object that alerts hello using the firstName and lastName properties.
+
+person.sayHello = function(){
+    console.log('Hello! My Name is ' + this.firstName + " " + this.lastName + "!");
+}
+
+person.sayHello();
+// Say hello from the person object.
+// person.sayHello();
+
+
+
+
+
+
+
+
+
+
+})();
+
+</script>
+</body>
+</html>

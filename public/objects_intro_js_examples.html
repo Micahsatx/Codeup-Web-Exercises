@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>object intro</title>
+</head>
+<body>
+<script>
+    (function(){
+    "use strict";
+
+        
+//         var car = {}; 
+//         // this variable is the most important part.  make, mode, color, year, etc doesnt have to be present in order for the car.honk to work...
+//         car.make = "Toyota";
+// // two different ways of making a property.  top is most common.  bottom is when a value needs to be passed
+//         // car['model'] = "Camry";  ---notice example that explains it below 
+//         car.model = "Camry"
+//         car.color = "gray";
+//         car.year = "2001"
+//         car.type = "sedan";
+
+//     console.log(car);
+//     console.log(car.year);
+//     console.log(car.color);
+//     console.log(car.type);
+
+// // if user put in info similar to below...
+//         // var what = "color";
+//         // console.log(var[color]);
+
+
+// // create a honk method on the car object
+//     car.honk = function () {
+//         alert("Honk! Honk!");
+//     };
+// // there is the method - now execute the command
+//     car.honk();
+
+
+// create an empty OBJECT
+    var player_1 = {};
+
+// create properties (variables)
+    player_1.name = "Tim Duncan";
+    player_1.power = "100";
+    player_1.speed = "100";
+    player_1.stamina = "20";
+    player_1.defence = "20";
+
+
+    player_1.intro = function(){
+        console.log("Hello " + this.name);
+        console.log("We are being attacked and need your help")
+    }
+    
+    // create methods (functions)
+    player_1.attack = function(){
+        console.log('attacking');
+    }
+
+    player_1.run = function(){
+        console.log("running");
+    }
+
+    player_1.injured = function(){
+        // this is talking about player_1 - since he is injured we are reducing his power by 1
+        this.power--;
+    }
+    player_1.showPower = function(){
+        console.log(this.power);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    })();
+
+</script>
+</body>
+</html>

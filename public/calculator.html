@@ -38,9 +38,15 @@
 "use strict"
 // this is a function that will fill the field with the specified value.  this function only occurs after the listener is activated.  the listener is added in the statements below.  
     function onNumberButtonPush(event) {
-       
+        
         var firstInt = document.getElementById("firstInt")
         firstInt.value =  this.innerHTML;
+    }
+    // this is the function that creates the operators into the second button field...  
+    function onOperatorButtonPush(event){
+
+        var actionPreformed = document.getElementById("actionPreformed")
+        actionPreformed.value = this.innerHTML;
     }
     // these are the listeners for specific buttons.. upon clicking the listener activates the above function
     var button1 = document.getElementById("btn1");
@@ -63,7 +69,14 @@
     button9.addEventListener("click", onNumberButtonPush, false);
     var button0 = document.getElementById("btn0");
     button0.addEventListener("click", onNumberButtonPush, false);
-  
+    var buttonPlus = document.getElementById("btn+");
+    buttonPlus.addEventListener("click", onOperatorButtonPush, false);
+    var buttonMinus = document.getElementById("btn-");
+    buttonMinus.addEventListener("click", onOperatorButtonPush, false);
+    var buttonDivide = document.getElementById("btn/");
+    buttonDivide.addEventListener("click", onOperatorButtonPush, false);
+    var buttonMultiply = document.getElementById("btn*");
+    buttonMultiply.addEventListener("click", onOperatorButtonPush, false);
 
 
 })();

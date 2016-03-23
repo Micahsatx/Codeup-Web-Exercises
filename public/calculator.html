@@ -39,11 +39,17 @@
 
 
 
-
+// first im delcaring hasOperatorBeenPushed to false... therefore if its false its going to print
+// the code into the slast box field..
     var hasOperatorBeenPushed = false;
+
+
 // this is a function that will fill the field with the specified value.  this function only occurs after the listener is activated.  the listener is added in the statements below.  
     function onNumberButtonPush(event) {
         // clean this up later by deleting the == true.  we dont need to compare it to true because it is already doing that
+        // since we declared this variable to be false it does not equal true unless an operator (+-?*) has been input
+        // if an operator has been input then put it in the last fied, if an operator has not been input
+        // then put it in the first field
         if (hasOperatorBeenPushed == true){
             var displayValue = document.getElementById("secondInt")
         } else {
@@ -55,14 +61,21 @@
         displayValue.value  =  previousValue + this.innerHTML;
 
     }
+
     // this is the function that creates the operators into the second button field...  
     function onOperatorButtonPush(event){
-
+        // the line below changes the hasOperatorBeenPushed variable to true..making the above true
+        // for when an operator has been put in, then the number buttons will go into the last field
         hasOperatorBeenPushed = true;
         var actionPreformed = document.getElementById("actionPreformed")
         actionPreformed.value = this.innerHTML;
     }
+     
 
+    // clear button operator.  it is retrieving the id for all 3 fields.  then changing them to nothing
+    // this reverts the field back to its placeholder.  if i did " " then it would have something typed
+    // in there and give a blank field.   If i wrote "value #1" it would print that in the field then later
+    // when i pressed a button it would do "Value #14512512" if i typed "4512512"
     function onClearButtonPush(event){
 
         var firstInt = document.getElementById("firstInt");
@@ -73,31 +86,6 @@
         secondInt.value = "";
     }
 
-
-
-
-    // commented out this section untill the if else statment is implemented that will say if the first value is put in, then an operator is click put it in the secondInt field..
-    //  function onNumberButtonPush(event) {
-        
-    //     var secondInt = document.getElementById("secondInt")
-    //     // this line takes the previous value set it equal to the firstint field value...
-    //     var previousValue = secondInt.value
-    //     // then this line takes the previous value and concatinates it with the other values you are typing in.
-    //     secondInt.value  =  previousValue + this.innerHTML;
-
-    // }
-    
-
-
-// attempting to make the clear button.  the line that clearField.value = this.innerHTML breaks the code
-    // function onOperatorButtonPush(event){
-    //     var firstInt = document.getElementById("firstInt")
-    //     var actionPreformed = document.getElementById("actionPreformed")
-    //     var secondInt = document.getElementById("secondInt")
-
-    //     var clearField = document.getElementById("clearField")
-    //     clearField.value = this.innerHTML;
-    // }
 
 
 

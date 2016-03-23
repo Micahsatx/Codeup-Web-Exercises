@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>CALCULATOR</title>
+</head>
+<body>
+    <button id="btn1">1</button>
+    <button id="btn2">2</button>
+    <button id="btn3">3</button>    
+    <button id="btn4">4</button>
+    <button id="btn5">5</button>
+    <button id="btn6">6</button>
+    <button id="btn7">7</button>    
+    <button id="btn8">8</button>
+    <button id="btn9">9</button>
+    <button id="btn0">0</button>
+    <button id="btnc">c</button>    
+    <button id="btn+">+</button>
+    <button id="btn-">-</button>
+    <button id="btn/">/</button>
+    <button id="btn*">*</button>    
+    <button id="btn=">=</button>
+     <!-- "btn="" button will be a "submit" button ex: 1.2.1 -->
+    <form method="POST" action="/calculator.html">
+        <p>
+            <!-- is the type = text? -->
+            <input id="firstInt" name="firstInt" type="text" placeholder="Value #1" readonly>
+        </p>
+        <p>
+             <!-- is the type = text? -->
+            <input id="actionPreformed" name="actionPreformed" type="text" placeholder="??" readonly>
+        </p>
+        <p>
+             <!-- is the type = text? -->
+            <input id="secondInt" name="secondInt" type="text" placeholder="Value #2" readonly>
+        </p>
+<script>
+(function(){
+"use strict"
+// this is a function that will fill the field with the specified value.  this function only occurs after the listener is activated.  the listener is added in the statements below.  
+    function onNumberButtonPush(event) {
+       
+        var firstInt = document.getElementById("firstInt")
+        firstInt.value =  this.innerHTML;
+    }
+    // these are the listeners for specific buttons.. upon clicking the listener activates the above function
+    var button1 = document.getElementById("btn1");
+    button1.addEventListener("click", onNumberButtonPush, false);
+    var button2 = document.getElementById("btn2");
+    button2.addEventListener("click", onNumberButtonPush, false);
+    var button3 = document.getElementById("btn3");
+    button3.addEventListener("click", onNumberButtonPush, false);
+    var button4 = document.getElementById("btn4");
+    button4.addEventListener("click", onNumberButtonPush, false);
+    var button5 = document.getElementById("btn5");
+    button5.addEventListener("click", onNumberButtonPush, false);
+    var button6 = document.getElementById("btn6");
+    button6.addEventListener("click", onNumberButtonPush, false);
+    var button7 = document.getElementById("btn7");
+    button7.addEventListener("click", onNumberButtonPush, false);
+    var button8 = document.getElementById("btn8");
+    button8.addEventListener("click", onNumberButtonPush, false);
+    var button9 = document.getElementById("btn9");
+    button9.addEventListener("click", onNumberButtonPush, false);
+    var button0 = document.getElementById("btn0");
+    button0.addEventListener("click", onNumberButtonPush, false);
+  
+
+
+})();
+</script>
+</body>
+</html>

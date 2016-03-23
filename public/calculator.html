@@ -13,7 +13,7 @@
     <button id="btn8">8</button>
     <button id="btn9">9</button>
     <button id="btn0">0</button>
-    <button id="btnc">c</button>    
+    <button id="btnc">C</button>    
     <button id="btn+">+</button>
     <button id="btn-">-</button>
     <button id="btn/">/</button>
@@ -27,7 +27,7 @@
         </p>
         <p>
              <!-- is the type = text? -->
-            <input id="actionPreformed" name="actionPreformed" type="text" placeholder="??" readonly>
+            <input id="actionPreformed" name="actionPreformed" type="text" placeholder="Operator" readonly>
         </p>
         <p>
              <!-- is the type = text? -->
@@ -53,6 +53,16 @@
         actionPreformed.value = this.innerHTML;
     }
 
+    function onClearButtonPush(event){
+
+        var firstInt = document.getElementById("firstInt");
+        var actionPreformed = document.getElementById("actionPreformed");
+        var secondInt = document.getElementById("secondInt");
+        firstInt.value = "";
+        actionPreformed.value = "";
+        secondInt.value = "";
+    }
+
 
 
 
@@ -65,6 +75,18 @@
     //     // then this line takes the previous value and concatinates it with the other values you are typing in.
     //     secondInt.value  =  previousValue + this.innerHTML;
 
+    // }
+    
+
+
+// attempting to make the clear button.  the line that clearField.value = this.innerHTML breaks the code
+    // function onOperatorButtonPush(event){
+    //     var firstInt = document.getElementById("firstInt")
+    //     var actionPreformed = document.getElementById("actionPreformed")
+    //     var secondInt = document.getElementById("secondInt")
+
+    //     var clearField = document.getElementById("clearField")
+    //     clearField.value = this.innerHTML;
     // }
 
 
@@ -99,6 +121,9 @@
     buttonDivide.addEventListener("click", onOperatorButtonPush, false);
     var buttonMultiply = document.getElementById("btn*");
     buttonMultiply.addEventListener("click", onOperatorButtonPush, false);
+    var buttonClear = document.getElementById("btnc");
+    buttonClear.addEventListener("click",
+        onClearButtonPush, false);
 
 
 })();

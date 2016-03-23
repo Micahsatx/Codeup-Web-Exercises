@@ -36,19 +36,29 @@
 <script>
 (function(){
 "use strict"
+
+
+
+
+    var hasOperatorBeenPushed = false;
 // this is a function that will fill the field with the specified value.  this function only occurs after the listener is activated.  the listener is added in the statements below.  
     function onNumberButtonPush(event) {
-        
-        var firstInt = document.getElementById("firstInt")
+        // clean this up later by deleting the == true.  we dont need to compare it to true because it is already doing that
+        if (hasOperatorBeenPushed == true){
+            var displayValue = document.getElementById("secondInt")
+        } else {
+            var displayValue = document.getElementById("firstInt")
+        }
         // this line takes the previous value set it equal to the firstint field value...
-        var previousValue = firstInt.value
+        var previousValue = displayValue.value
         // then this line takes the previous value and concatinates it with the other values you are typing in.
-        firstInt.value  =  previousValue + this.innerHTML;
+        displayValue.value  =  previousValue + this.innerHTML;
 
     }
     // this is the function that creates the operators into the second button field...  
     function onOperatorButtonPush(event){
 
+        hasOperatorBeenPushed = true;
         var actionPreformed = document.getElementById("actionPreformed")
         actionPreformed.value = this.innerHTML;
     }

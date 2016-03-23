@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>DOM query js practice</title>
+</head>
+<body>
+<a href="http://www.yahoo.com" id="search-link">Web Search</a>
+<script>
+"use strict";
+
+
+// inner html changes the style of the heading..
+	heading1.innerHTML = "Hello <small> Joshua </small>";
+
+
+	// the next 14 lines are for grabbing elements...
+	var heading1 = document.getElementById("heading-1");
+
+	// cant use for each..must be for loop
+	for (var i = 0; i< evenParas.length; i++) {
+
+	}
+
+
+	// this is the command that is grabbing the element that is p.
+	var paragraphs = document.getElementsByTagName("p");
+
+	// the for loop is what grabs the elements from the page
+	for (var i = 0; i <paragraphs.length; i++) {
+		console.log([i]);
+	}
+
+// searching for attributes like hrefs, class, etc.   we could also setAttribute to change
+// so this is finding the ID search link
+	var link = document.getElementById("search-link");
+
+
+	// ****** GET BLANK AND SET BLANK IS IMPORTANT IN PHP **********
+	// this finds the href and tells us what it is
+	console.log(link.getAttribute("href"));
+	// the difference between get vs set..
+	link.setAttribute("href", "http://www.bing.com");
+
+</script>
+</body>
+</html>

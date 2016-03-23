@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>interval practice</title>
+</head>
+<body>
+<script>
+(function(){
+
+var count = 0;
+var max = 5;
+var interval = 750;
+
+var intervalId = setInterval(function(){
+    if (count >= max){
+        clearInterval(intervalId);
+        console.log("The Count is not Over. Its been 5 loops but not 5 seconds");
+    } else {
+        count++;
+        console.log("Repeating at the interval 3/4 seconds.  The number of loops cycled is " + count);
+    }
+}, interval)
+var delay = 5000;
+var timeoutId = setTimeout (function(){
+    alert("The count is over.  Its been 5 seconds");
+}, delay);
+
+
+
+
+})();
+</script>
+</body>
+</html>
+<!-- Extra Practice
+
+Using setInterval and setTimeout, write some JavaScript that will log a message to the console every 3/4 of a second (ie every 750 milliseconds), and stop logging messages after 5 seconds.
+
+Using JavaScript:
+
+change the text of an element with the id of change-my-text to 'hello, codeup!'
+change the font color of all elements with the class change-my-color to salmon
+add the class my-paragraph to all <p> tags
+Bonus: do this without removing any classes that are already present
+change the padding-top CSS property of the <body> to 40px -->

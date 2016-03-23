@@ -40,7 +40,11 @@
     function onNumberButtonPush(event) {
         
         var firstInt = document.getElementById("firstInt")
-        firstInt.value =  this.innerHTML;
+        // this line takes the previous value set it equal to the firstint field value...
+        var previousValue = firstInt.value
+        // then this line takes the previous value and concatinates it with the other values you are typing in.
+        firstInt.value  =  previousValue + this.innerHTML;
+
     }
     // this is the function that creates the operators into the second button field...  
     function onOperatorButtonPush(event){
@@ -48,6 +52,24 @@
         var actionPreformed = document.getElementById("actionPreformed")
         actionPreformed.value = this.innerHTML;
     }
+
+
+
+
+    // commented out this section untill the if else statment is implemented that will say if the first value is put in, then an operator is click put it in the secondInt field..
+    //  function onNumberButtonPush(event) {
+        
+    //     var secondInt = document.getElementById("secondInt")
+    //     // this line takes the previous value set it equal to the firstint field value...
+    //     var previousValue = secondInt.value
+    //     // then this line takes the previous value and concatinates it with the other values you are typing in.
+    //     secondInt.value  =  previousValue + this.innerHTML;
+
+    // }
+
+
+
+
     // these are the listeners for specific buttons.. upon clicking the listener activates the above function
     var button1 = document.getElementById("btn1");
     button1.addEventListener("click", onNumberButtonPush, false);

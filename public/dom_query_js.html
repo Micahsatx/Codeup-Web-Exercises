@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>event listeners</title>
+</head>
+
+
+<!-- <body>
+<script>
+"use strict"
+// // create a handler function
+// var listener = function (event) {
+//     alert('you clicked the button');
+// }
+// // register the listener to handle clicks on btn1
+// document.getElementById('btn1').addEventListener('click', listener, false);
+</script>
+</body> -->
+<body>
+    <h1 id="main-header">Hello World!</h1>
+    <ul>
+        <li data-dbid="8">Item 1</li>
+        <li data-dbid="2">Item 2</li>
+        <li data-dbid="1">Item 3</li>
+        <li data-dbid="4">Item 4</li>
+        <li data-dbid="908">Item 5</li>
+    </ul>
+    <h2 id="sub-header">Hello Again.</h2>
+    <p class="sub-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+        culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <!-- examples -->
+    <!-- <button id="btn1">JavaButton</button>
+    <button id="btn2">Remove Event Listener</button> -->
+    <button id="btn1">Java Button</button>
+    <button id="btn2">Second Button</button>
+    <button id="btn3">Third Button</button>    
+    <button id="btn4">Forf</button>
+    <script>
+    var listener = function(event) {
+    var mainHeader = document.getElementById("main-header");
+        mainHeader.innerHTML = "JavaScript is Cool";
+    };
+    var btn1 = document.getElementById('btn1');
+    btn1.addEventListener("click", listener, false);
+
+
+
+    var listener = function(event){
+    var subHeader = document.getElementById("sub-header");
+        subHeader.style.color = "blue";
+    };
+
+    var btn2 = document.getElementById('btn2');
+    btn2.addEventListener("click", listener, false)
+
+
+
+
+
+    var listener = function(event){
+        console.log("we are inside the listener function");
+        var listItems = document.getElementsByTagName("li");
+// this line is always used in a for loop to cycle through all the items in the loop
+        for (var i = 0; i < listItems.length; i++) {
+            if (i % 2 == 1){
+                listItems[i].style.color = "grey";
+            }
+            var dbid = listItems[i].getAttribute("data-dbid");
+            if (dbid == "1"){   
+                listItems[i].style.color = "blue";
+            };
+        }
+    }
+
+    var btn3 = document.getElementById("btn3");
+    console.log("btn3");
+    btn3.addEventListener("click", listener, false)
+
+
+
+
+
+
+// event or e are the common names for the event.. you can name it whatever..as long as its e or event
+        // var listener = function (event) {
+        //     alert('You clicked the button!');
+        // }
+
+        // // add event listener to btn1
+        // var btn1 = document.getElementById('btn1');
+        // btn1.addEventListener('click', listener, false)
+        // document.getElementById('btn1').addEventListener('Click', listener, false);
+        // ;
+
+        // var remover = function (event) {
+        //     // remove event listener from btn1
+        //     btn1.removeEventListener('click', listener, false);
+
+        //     console.log('Event listener removed.');
+
+        // }
+
+        // // add event listener to btn2
+        // var btn2 = document.getElementById('btn2');
+        // btn2.addEventListener('click', remover, false);
+
+    </script>
+</body>
+
+</html>

@@ -86,6 +86,28 @@
         secondInt.value = "";
     }
 
+// making the equals sign event listener and function.
+    function onEqualButtonPush(event){
+        // mimiking on clearButtonPush function..
+        var actionPreformed = document.getElementById("actionPreformed");
+        // grabbing the two variables related to the 2 value fields
+        var secondInt = document.getElementById("secondInt");
+        var firstInt = document.getElementById("firstInt");
+        // declaring what the two variables value are!
+        var firstValue = firstInt.value
+        var secondValue = secondInt.value
+        // unsure on this line.  trying to declare the value of the operator that was clicked...
+        var actionPreformed = actionPreformed.value
+
+        console.log(actionPreformed)
+        
+
+        // below line is blanking it out.. useless
+        // firstInt.value = "";
+        // secondInt.value = "";
+
+    }
+
 
 
 
@@ -122,6 +144,9 @@
     var buttonClear = document.getElementById("btnc");
     buttonClear.addEventListener("click",
         onClearButtonPush, false);
+    var buttonEqual = document.getElementById("btn=");
+    buttonEqual.addEventListener("click",
+        onEqualButtonPush, false);
 
 
 })();

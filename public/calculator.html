@@ -98,13 +98,30 @@
         var secondValue = secondInt.value
         // unsure on this line.  trying to declare the value of the operator that was clicked...
         var actionPreformed = actionPreformed.value
+        console.log(firstValue);
+        console.log(actionPreformed);
+        console.log(secondValue)
+        console.log(firstInt.value)
 
-        console.log(actionPreformed)
-        
+        switch (actionPreformed){
+            case "+":
+                firstValue = parseInt(firstValue) + parseInt(secondValue)
+                break;
+            case "-":
+                firstValue = parseInt(firstValue) - parseInt(secondValue)
+                break;
+            case "*":
+                firstValue = parseInt(firstValue) * parseInt(secondValue)
+                break;
+            case "/":
+                firstValue = parseInt(firstValue) / parseInt(secondValue)
+                break;
+        }
 
-        // below line is blanking it out.. useless
-        // firstInt.value = "";
-        // secondInt.value = "";
+       firstInt.value = firstValue;
+       secondInt.value = "";
+       actionPreformed.value = "";
+      
 
     }
 

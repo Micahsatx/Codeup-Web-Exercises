@@ -6,48 +6,88 @@
 </head>
 <body>
 <div class = "calculator">
-    <form class="form-inline">
-        <div class="form-group">
-            <input id="firstInt" class="form-control" name="firstInt" type="text" placeholder="Value #1" readonly>
-        </div>
-        <div class="form-group">
-            <input id="actionPreformed" class="form-control" name="actionPreformed" type="text" placeholder="Operator" readonly>
-        </div>
-        <div class="form-group">
-            <input id="secondInt" class="form-control" name="secondInt" type="text" placeholder="Value #2" readonly>
-        </div>
-    </form>
+    <div class="row">
+        <form class="form-inline col-xs-3">
+            <div class="form-group">
+                <input id="firstInt" class="form-control" name="firstInt" type="text" placeholder="Value #1" readonly>
+            </div>
+            <div class="form-group">
+                <input id="actionPreformed" class="form-control" name="actionPreformed" type="text" placeholder="Operator" readonly>
+            </div>
+            <div class="form-group">
+                <input id="secondInt" class="form-control" name="secondInt" type="text" placeholder="Value #2" readonly>
+            </div>
+        </form>
+    </div>
 
-
-        <div class="buttons">
-            <div class = "row2">
-                <button class="function"id="btnClear">C</button>    
-                <button class="function"id="btnNegative">-</button>
-                <button class="function"id="fakeButton">??</button>
-                <button class="operator" id="btnDivide">/</button>
+        <div class="clickers">
+            <div class="row">
+                <div class="col-xs-3">
+                    <button class="btn-block function" id="btnClear">C</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block function" id="btnNegative">-</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block function" id="fakeButton">??</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block operator" id="btnDivide">/</button>
+                </div>
+                
             </div>
-            <div class = "row3">
-                <button class="numbers" id="btn7">7</button>    
-                <button class="numbers" id="btn8">8</button>
-                <button class="numbers" id="btn9">9</button>
-                <button class="operator" id="btnMultiply">*</button>    
+            <div class = "row">
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn7">7</button> 
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn8">8</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn9">9</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block operator" id="btnMultiply">*</button>   
+                </div> 
             </div>
-            <div class= "row4">
-                <button class="numbers" id="btn4">4</button>
-                <button class="numbers" id="btn5">5</button>
-                <button class="numbers" id="btn6">6</button>
-                <button class="operator" id="btnMinus">-</button>
+            <div class= "row">
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn4">4</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn5">5</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn6">6</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block operator" id="btnMinus">-</button>
+                </div>
             </div>
-            <div class= "row5">
-                <button class="numbers" id="btn1">1</button>
-                <button class="numbers" id="btn2">2</button>
-                <button class="numbers" id="btn3">3</button>    
-                <button class="operator" id="btnPlus">+</button>
+            <div class= "row">
+                <div class="col-xs-3">              
+                    <button class="btn-block numbers" id="btn1">1</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn2">2</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block numbers" id="btn3">3</button>
+                </div>
+                <div class="col-xs-3">    
+                    <button class="btn-block operator" id="btnPlus">+</button>
+                </div>
             </div>
-            <div class= "row6">
-            <button class="zero" id="btn0">0</button>
-            <button class="function"id="btnDecimal">.</button>
-            <button class="operator" id="btnEqual">=</button>
+            <div class= "row">
+                <div class="col-xs-6">
+                    <button class="btn-block zero" id="btn0">0</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block function"id="btnDecimal">.</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-block operator" id="btnEqual">=</button>
+                </div>
             </div>
     </div>
 

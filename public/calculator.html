@@ -13,12 +13,13 @@
     <button id="btn8">8</button>
     <button id="btn9">9</button>
     <button id="btn0">0</button>
-    <button id="btnc">C</button>    
-    <button id="btn+">+</button>
-    <button id="btn-">-</button>
-    <button id="btn/">/</button>
-    <button id="btn*">*</button>    
-    <button id="btn=">=</button>
+    <button id="btnClear">C</button>    
+    <button id="btnPlus">+</button>
+    <button id="btnMinus">-</button>
+    <button id="btnDivide">/</button>
+    <button id="btnMultiply">*</button>    
+    <button id="btnEqual">=</button>
+    <button id="btnDecimal">.</button>
      <!-- "btn="" button will be a "submit" button ex: 1.2.1 -->
     <form method="POST" action="/calculator.html">
         <p>
@@ -97,24 +98,24 @@
         var firstValue = firstInt.value
         var secondValue = secondInt.value
         // unsure on this line.  trying to declare the value of the operator that was clicked...
-        var actionPreformed = actionPreformed.value
+        var operator = actionPreformed.value
         console.log(firstValue);
         console.log(actionPreformed);
         console.log(secondValue)
         console.log(firstInt.value)
 
-        switch (actionPreformed){
+        switch (operator){
             case "+":
-                firstValue = parseInt(firstValue) + parseInt(secondValue)
+                firstValue = parseFloat(firstValue) + parseFloat(secondValue)
                 break;
             case "-":
-                firstValue = parseInt(firstValue) - parseInt(secondValue)
+                firstValue = parseFloat(firstValue) - parseFloat(secondValue)
                 break;
             case "*":
-                firstValue = parseInt(firstValue) * parseInt(secondValue)
+                firstValue = parseFloat(firstValue) * parseFloat(secondValue)
                 break;
             case "/":
-                firstValue = parseInt(firstValue) / parseInt(secondValue)
+                firstValue = parseFloat(firstValue) / parseFloat(secondValue)
                 break;
         }
 
@@ -150,20 +151,23 @@
     button9.addEventListener("click", onNumberButtonPush, false);
     var button0 = document.getElementById("btn0");
     button0.addEventListener("click", onNumberButtonPush, false);
-    var buttonPlus = document.getElementById("btn+");
+    var buttonPlus = document.getElementById("btnPlus");
     buttonPlus.addEventListener("click", onOperatorButtonPush, false);
-    var buttonMinus = document.getElementById("btn-");
+    var buttonMinus = document.getElementById("btnMinus");
     buttonMinus.addEventListener("click", onOperatorButtonPush, false);
-    var buttonDivide = document.getElementById("btn/");
+    var buttonDivide = document.getElementById("btnDivide");
     buttonDivide.addEventListener("click", onOperatorButtonPush, false);
-    var buttonMultiply = document.getElementById("btn*");
+    var buttonMultiply = document.getElementById("btnMultiply");
     buttonMultiply.addEventListener("click", onOperatorButtonPush, false);
-    var buttonClear = document.getElementById("btnc");
+    var buttonClear = document.getElementById("btnClear");
     buttonClear.addEventListener("click",
         onClearButtonPush, false);
-    var buttonEqual = document.getElementById("btn=");
+    var buttonEqual = document.getElementById("btnEqual");
     buttonEqual.addEventListener("click",
         onEqualButtonPush, false);
+    var buttonDecimal = document.getElementById("btnDecimal");
+    buttonDecimal.addEventListener("click", onNumberButtonPush, false);
+
 
 
 })();

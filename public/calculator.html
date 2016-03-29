@@ -29,7 +29,7 @@
                     <button class="btn-block function" id="btnNegative">-</button>
                 </div>
                 <div class="col-xs-3">
-                    <button class="btn-block function" id="fakeButton">??</button>
+                    <button class="btn-block function stillBroke" id="fakeButton">%</button>
                 </div>
                 <div class="col-xs-3">
                     <button class="btn-block operator" id="btnDivide">/</button>
@@ -83,10 +83,10 @@
                     <button class="btn-block zero" id="btn0">0</button>
                 </div>
                 <div class="col-xs-3">
-                    <button class="btn-block function"id="btnDecimal">.</button>
+                    <button class="btn-block function stillBroke"id="btnDecimal">.</button>
                 </div>
                 <div class="col-xs-3">
-                    <button class="btn-block operator" id="btnEqual">=</button>
+                    <button class="btn-block operator equalsButton" id="btnEqual">=</button>
                 </div>
             </div>
     </div>
@@ -199,6 +199,17 @@
         actionPreformed.value = "";
         secondInt.value = "";
     }
+
+    function Dot() 
+        {
+          if ( Current.length == 0) 
+            { Current = "0.";
+            } else
+            {  if ( Current.indexOf(".") == -1)
+                 { Current = Current + ".";
+            };   };
+          document.Calculator.Display.value = Current;
+         }
 
 // making the equals sign event listener and function.
     function onEqualButtonPush(event){

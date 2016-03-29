@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>Google Maps Api</title>
+    <style type="text/css">
+    #map-canvas {
+        width: 770px;
+        height: 481px;
+    }
+
+    /*a class was added within the href.  making it possible to style it*/
+    .my-link{
+        font-size: 1em; 
+    }
+
+
+    </style>
+</head>
+<body>
+
+<div id="map-canvas"></div>
+
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxYW8gKj-HrFFAulJfo6pd1hNAeWAgKRg"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+
+    (function() {
+    "use strict";
+
+        // Set our map options
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 17,
+        };
+
+        // Render the map
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        // Init geocoder object--geocoder is for using an address
+        var address = "427 North Loop 1604 W #101, San Antonio, TX 78232";
+        var geocoder = new google.maps.Geocoder();
+        var marker;
+        var tarka;
+        var infowindow;
+
+        // Geocode our address
+        geocoder.geocode({ "address": address }, function(results, status) {
+
+           // Check for a successful result
+           if (status == google.maps.GeocoderStatus.OK) {
+
+               // Recenter the map over the address
+               map.setCenter(results[0].geometry.location);
+           } else {
+
+               // Show an error message with the status if our request fails and address is not valid
+               alert("Geocoding was not successful - STATUS: " + status);
+           }
+
+        
+
+        });
+
+        // cerating a function for marker and secret message.
+        function attachSecretMessage(marker, secretMessage) {
+            infowindow = new google.maps.InfoWindow({
+        // setting what the contend is set to.  it is defined below
+            content: secretMessage
+          });
+        // event listener for click on above function..
+          marker.addListener('click', function() {
+            infowindow.open(marker.get('map'), marker);
+          });
+
+        }
+
+
+
+        // Create lat and long for our marker position
+        tarka = { lat: 29.609515, lng: -98.499302 };
+
+        // Add the marker to our existing map
+        marker = new google.maps.Marker({
+            position: tarka,
+            map: map
+        
+
+        });
+        // the info window that appears upon load of the page... notice it is outside of any functions
+        infowindow = new google.maps.InfoWindow({
+        // this is defining the content of the secret message above.  This is run after the marker is clicked..  the function had 2 parts...the marker and the secret message.  the marker is defined above.
+        // notice the content was required to all be within a single string.  having 2 sets of quotes or having the string on 2 seperate lines breaks it...
+        content: "Local counter-serve chain dishing up Indian curries, kebabs & more in a contemporary setting.<a href='http://www.tarkaindiankitchen.com/' class='my-link'>Visit Tarka's Site</a> <img src='/img/korma.jpg' alt='A picture of my favorite dish.  a pistachio curry with lamb' height='120' width='120'><img src='/img/kabbobs.jpg' alt='chicken kabbob' height='120' width='120'><img src='/img/spices.jpg' alt='curry spices' height='120' width='240'><img src='/img/nan.jpg' alt='nan' height='120' width='120'><img src='/img/spicy.jpeg' alt='spicy warning!!' height='120' width='50'>",
+        target: "_blank"
+        
+        });
+
+        // Open the window using our map and marker
+        infowindow.open(map, marker);
+        // calling the function attachSecretMessage(marker, secretMessage)
+        attachSecretMessage(marker, "Micah reccomends Spicy Lamb Korma w/ vegitables.");
+
+
+
+    })();        
+</script>
+
+
+</body>
+</html>
+
+

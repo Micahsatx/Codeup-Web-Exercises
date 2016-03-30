@@ -3,34 +3,75 @@
     height: auto;
     /*width: 30em;*/
     margin: 100px;
-    margin-left: 300px
-
-    
+    margin-left: 300px   
 }
 
+/*0-9 buttons*/
 .numbers {
     /*width: 25%;*/
     position:relative;
     background-color: grey;
 }
+
+/*plus minus multiply divide*/
 .operator {
     /*width: 25%;*/
     position:relative;
     background-color: orange;
 }
+.equalsButton {
+    background-color: yellow;
+}
+.inputFields{
+    padding-bottom: 2px;
+}
+
+/*decimal*/
 .function{
     /*width: 25%;*/
     position:relative;
     background-color: red;
 }
-
+.stillBroke{
+    background-color: salmon;
+}
+/*zero button*/
 .zero{
     /*width:40.85%;*/
     background-color: grey;
     position:relative;
 }
-
+/*all buttons*/
 .clickers {
-    margin: 0;
-    border: 0;
+    margin: -2px;
+    border: 0px;
+}
+.row {
+    padding: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+   
+}
+/*all the buttons besides the zero...*/
+.col-xs-3 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+/*zero button*/
+.col-xs-6 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+/*3 fields at the top for inputs*/
+.col-xs-12 {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 0px;
+}
+.col-xs-4 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.calculator {
+    padding: 2px;
 }

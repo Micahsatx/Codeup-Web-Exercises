@@ -1,12 +1,9 @@
-window.onload = function() {
-    alert( 'The page has finished loading!' );
-}
-
-$(document).ready(function(){
-    var sayHello = $("#latin-crap").html();
-    alert(sayHello);
+$(document).ready(function() {
+    $('.codeup').css('background-color', 'firebrick').css('border', "4px ridge red");
 
 });
-// $("codeup");
 
-// .instructors
+
+
+
+

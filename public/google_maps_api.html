@@ -29,21 +29,24 @@
     "use strict";
 
         // Set our map options
-        var mapOptions = {
+        mapOptions = {
             // Set the zoom level
-            zoom: 17,
+            zoom: 11,
         };
+
 
         // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
         // Init geocoder object--geocoder is for using an address
-        var address = "427 North Loop 1604 W #101, San Antonio, TX 78232";
+        var address = "San Antonio, TX 78232";
         var geocoder = new google.maps.Geocoder();
-        var marker;
+        var tarkaMarker;
+        var pavaniMarker;
+        var pavani;
         var tarka;
-        var infowindow;
-
+        var tarkaInfowindow;
+        var pavaniInfowindow;
+        var mapOptions;
         // Geocode our address
         geocoder.geocode({ "address": address }, function(results, status) {
 
@@ -75,35 +78,75 @@
 
         }
 
-
-
-        // Create lat and long for our marker position
-        tarka = { lat: 29.609515, lng: -98.499302 };
-
         // Add the marker to our existing map
-        marker = new google.maps.Marker({
+        tarkaMarker = new google.maps.Marker({
             position: tarka,
             map: map
+        });
+        pavaniMarker = new google.maps.Marker({
+            position: pavani,
+            map: map
+        });
         
 
-        });
-        // the info window that appears upon load of the page... notice it is outside of any functions
-        infowindow = new google.maps.InfoWindow({
-        // this is defining the content of the secret message above.  This is run after the marker is clicked..  the function had 2 parts...the marker and the secret message.  the marker is defined above.
-        // notice the content was required to all be within a single string.  having 2 sets of quotes or having the string on 2 seperate lines breaks it...
-        content: "Local counter-serve chain dishing up Indian curries, kebabs & more in a contemporary setting.<a href='http://www.tarkaindiankitchen.com/' class='my-link'>Visit Tarka's Site</a> <img src='/img/korma.jpg' alt='A picture of my favorite dish.  a pistachio curry with lamb' height='120' width='120'><img src='/img/kabbobs.jpg' alt='chicken kabbob' height='120' width='120'><img src='/img/spices.jpg' alt='curry spices' height='120' width='240'><img src='/img/nan.jpg' alt='nan' height='120' width='120'><img src='/img/spicy.jpeg' alt='spicy warning!!' height='120' width='50'>",
-        target: "_blank"
+        // // the info window that appears upon load of the page... notice it is outside of any functions
+        // var infowindow = new google.maps.InfoWindow({
+        // // this is defining the content of the info window..   This is NOT YET run after the marker is clicked..  the function had 2 parts...the marker and the secret message.  the marker is defined above.
+        // // notice the content was required to all be within a single string.  having 2 sets of quotes or having the string on 2 seperate lines breaks it...
+        //     content: "Local counter-serve chain dishing up Indian curries, kebabs & more in a contemporary setting.<a href='http://www.tarkaindiankitchen.com/' class='my-link'>  Visit Tarka's Site</a> <img src='/img/korma.jpg' alt='A picture of my favorite dish.  a pistachio curry with lamb' height='120' width='120'><img src='/img/kabbobs.jpg' alt='chicken kabbob' height='120' width='120'><img src='/img/spices.jpg' alt='curry spices' height='120' width='240'><img src='/img/nan.jpg' alt='nan' height='120' width='120'><img src='/img/spicy.jpeg' alt='spicy warning!!' height='120' width='50'>",
+        //     target: "_blank"
+            
+        // });
+
+        // pavaniInfowindow = new google.maps.InfoWindow({
+        //     content: "Hole in the wall.  Garunteed to be the only non-indian there.",
+        //     target: "_blank"   
+        // })
+        // // event listener for click on marker that will open the info window...
+        // tarkaMarker.addListener ('click', function(){
+        // // Open the window using our map and marker
+        // // this is the line that adds the marker.. it is outside of any function..
+        //     tarkaInfowindow.open(map, tarkaMarker);
+        // });
         
+
+
+        var indianFoodResteraunts = [
+            {name: 'tarka', location: {lat: 29.609515, lng: -98.499302}, icon: '/img/pretty1.png', infoWindow:"Local counter-serve chain dishing up Indian curries, kebabs & more in a contemporary setting.<a href='http://www.tarkaindiankitchen.com/' class='my-link'>  Visit Tarka's Site</a> <img src='/img/korma.jpg' alt='A picture of my favorite dish.  a pistachio curry with lamb' height='120' width='120'><img src='/img/kabbobs.jpg' alt='chicken kabbob' height='120' width='120'><img src='/img/spices.jpg' alt='curry spices' height='120' width='240'><img src='/img/nan.jpg' alt='nan' height='120' width='120'><img src='/img/spicy.jpeg' alt='spicy warning!!' height='120' width='50'f"},
+            {name: 'pavani', location: {lat: 29.490292, lng: -98.599116}, icon: '/img/pretty2.png', infoWindow:"Hole in the wall.  Garunteed to be the only non-indian there."}
+
+        ];
+
+        indianFoodResteraunts.forEach(function(resteraunt) {
+
+            
+            var marker = new google.maps.Marker({
+                map: map,
+                position: resteraunt.location,
+                icon: resteraunt.icon
+                // information: resteraunt.infoWindow
+
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+            // this is defining the content of the info window..   This is NOT YET run after the marker is clicked..  the function had 2 parts...the marker and the secret message.  the marker is defined above.
+            // notice the content was required to all be within a single string.  having 2 sets of quotes or having the string on 2 seperate lines breaks it...
+                content: resteraunt.infoWindow,
+                target: "_blank"
+                
+            });
+
+            marker.addListener ('click', function(){
+                infowindow.open(map, marker);
+            });
+
         });
-
-        // Open the window using our map and marker
-        infowindow.open(map, marker);
-        // calling the function attachSecretMessage(marker, secretMessage)
-        attachSecretMessage(marker, "Micah reccomends Spicy Lamb Korma w/ vegitables.");
-
-
 
     })();        
+
+
+
+
 </script>
 
 

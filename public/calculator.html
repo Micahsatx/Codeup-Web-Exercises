@@ -7,7 +7,7 @@
 <body>
 <div class = "calculator">
     <div class="row">
-        <form class="form-inline col-xs-12">
+        <form class="form-inline col-xs-12 inputFields">
             <div class="col-xs-4">
                 <input id="firstInt" class="form-control" name="firstInt" type="text" placeholder="Value #1" readonly>
             </div>
@@ -29,7 +29,7 @@
                     <button class="btn-block function" id="btnNegative">-</button>
                 </div>
                 <div class="col-xs-3">
-                    <button class="btn-block function stillBroke" id="fakeButton">%</button>
+                    <button class="btn-block function stillBroke" id="btnPercentage">%</button>
                 </div>
                 <div class="col-xs-3">
                     <button class="btn-block operator" id="btnDivide">/</button>
@@ -135,10 +135,10 @@
     buttonEqual.addEventListener("click",
         onEqualButtonPush, false);
     var buttonDecimal = document.getElementById("btnDecimal");
-    buttonDecimal.addEventListener("click", onNumberButtonPush, false);
+    buttonDecimal.addEventListener("click", onDecimalButtonPush, false);
     var buttonNegative = document.getElementById("btnNegative");
     buttonNegative.addEventListener("click", onNegativeListener, false);
-
+    var buttonPercentage = document.getElementById("btnPercentage"); buttonPercentage.addEventListener("click", onPercentageButtonPush, false);
 
 
 // first im delcaring hasOperatorBeenPushed to false... therefore if its false its going to print
@@ -200,16 +200,37 @@
         secondInt.value = "";
     }
 
-    function Dot() 
-        {
-          if ( Current.length == 0) 
-            { Current = "0.";
-            } else
-            {  if ( Current.indexOf(".") == -1)
-                 { Current = Current + ".";
-            };   };
-          document.Calculator.Display.value = Current;
-         }
+    function onDecimalButtonPush() {
+        
+         if (hasOperatorBeenPushed == true){
+            var displayValue = document.getElementById("secondInt")
+        } else {
+            var displayValue = document.getElementById("firstInt")
+        }
+        var numberToCheck = displayValue.value
+        if (numberToCheck.indexOf(".") == -1){
+            displayValue.value += ".";
+        }
+    }
+    function onPercentageButtonPush(event){
+        
+    var firstInt = document.getElementById("firstInt");
+        if (hasOperatorBeenPushed == true){
+            var displayValue = document.getElementById("secondInt")
+        } else {
+            var displayValue = document.getElementById("firstInt")
+        }
+            var previousValue = parseFloat(displayValue.value);
+            previousValue *= -1;
+            displayValue.value = previousValue;
+    }
+          // if ( Current.length == 0) 
+          //   { Current = "0.";
+          //   } else
+          //   {  if ( Current.indexOf(".") == -1)
+          //        { Current = Current + ".";
+          //   };   };
+          // document.Calculator.Display.value = Current;
 
 // making the equals sign event listener and function.
     function onEqualButtonPush(event){

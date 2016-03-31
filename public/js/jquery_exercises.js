@@ -1,9 +1,16 @@
-$(document).ready(function() {
-    $('.codeup').css('background-color', 'firebrick').css('border', "4px ridge red");
+"use strict";
 
+$(".codeup").click(function(){
+    $(this).css("background-color", "red");
 });
 
+$("p").dblclick(function(){
+    $(this).css("font-size", "18px");
+});
 
-
-
-
+$("li").hover(function(){
+        $(this).css("color", "red");
+    }, function(){
+        $(this).css("color", "");    
+    
+});

@@ -1,0 +1,14 @@
+#failedKonami {
+    display: none;
+
+}
+
+/*#wrapper {
+    display: none;
+}*/
+
+body {
+    background-image: url("/img/konami.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

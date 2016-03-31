@@ -9,7 +9,7 @@ $("p").dblclick(function(){
 });
 
 $("li").hover(function(){
-        $(this).css("color", "red");
+        $(this).css("color", "dodgerblue");
     }, function(){
         $(this).css("color", "");    
     

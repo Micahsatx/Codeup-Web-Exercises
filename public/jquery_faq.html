@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-<!-- exercise 4.3.1 -->
 <head>
-
-
     <title>jquery FAQ </title>
-
+<!-- CSS SECTION -->
+<!-- class for exerise 4.2.1 -->
     <style>
-        
         .invisible {
             display: none;
         }
     </style>
 
+
+
 </head>
 
-<body>
+<body id = "Joshua">
 
 <h1>Here are some frequently asked questions about Yellowstone National Park</h1>
 <dl>
@@ -52,7 +51,9 @@
 </dl>
 <a href="#" id="show-important">Click this to hide/show the answers to FAQ's</a>
 
-    <h3>Carlsbad Caverns National Park</h3>
+
+
+<h3>Carlsbad Caverns National Park</h3>
     <ul id="national-parks">
         <li> 17 bat species are species known to live in the park</li>
         <li>Carlsbad Caverns spans 46,766 acres</li>
@@ -74,6 +75,12 @@
         <li>Highest Eleveation 5,813 feet on Quail Mountain</li>
     </ul>
 
+
+
+
+
+
+
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 (function(){
@@ -83,11 +90,11 @@
    
    $('#show-important').click(function(event) {
         event.preventDefault();
-        $('dd').toggleClass('invisible');
+        $('dd').slideToggle();
     });
 
 
-
+// exercise 4.3.1
 // we are grabbing EACH UL and runnign the function.  we have to write in index, element because we are modifying the element (UL) and to get to the element we also have to write index although we arent changing the index.   
 // so the next line we are finding the element (UL) and targeting its .children (the "li"). then we are geting the .first one and changing the css.
 $('ul').each(function(index, element){
@@ -96,22 +103,22 @@ $('ul').each(function(index, element){
     });
 });
 
-
-
-$('li').click(function(clicky){
-    console.log("we are inside click")
-    $(this).parent('ul').css({
-        'display': 'none'
-    });
-
+// last part of exercise 4.3.1
+// click event for the bottom lists.  click the list and it hides the list items..
+$('h3').click(function(clicky){
+    $(this).next('ul').slideToggle();
 });
 
 
 
+// var body = $("#joshua").slideup();
+// $(".codeup").click(function(){
+//     body.slideToggle();
+// })
+
+
 
 })();
-
-
 </script>
 </body>
 </html>

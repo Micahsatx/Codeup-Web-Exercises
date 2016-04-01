@@ -50,17 +50,62 @@
     <dd class="invisible">Think of the Continental Divide as the crest of the continent. Theoretically, when precipitation falls on the west side of the Divide, it eventually reaches the Pacific Ocean. When it falls on the east side of the Divide, it eventually reaches the Atlantic Ocean. In Yellowstone (as elsewhere), this ridgeline is not straight. You cross the Continental Divide three times between the South Entrance and the Old Faithful area. Craig Pass is the highest crossing, at 8,262 feet.</dd>
 
 </dl>
-<a href="#" id="show-important">Click this for answers to FAQ's</a>
+<a href="#" id="show-important">Click this to hide/show the answers to FAQ's</a>
+
+    <h3>Carlsbad Caverns National Park</h3>
+    <ul id="national-parks">
+        <li> 17 bat species are species known to live in the park</li>
+        <li>Carlsbad Caverns spans 46,766 acres</li>
+        <li>Congress designates Carlsbad Caverns National Park May 14, 1930  </li>
+        <li>The limestone rock that holds Carlsbad Cavern is full of ocean fossil plants and animals from a time before the dinosaurs when the southeastern corner of New Mexico was a coastline similar to the Florida Keys.</li>
+    </ul>
+    <h3>Yellow Stone National Park</h3>
+    <ul id="national-parks">
+        <li>Yellowstone National Park is the first established national park in the United States</li>
+        <li>Yellowstone National Park spans an area of over 3,450 square miles</li>
+        <li>Yellowstone National Park is so large that is covers three states</li>
+        <li>Yellowstone has a super volcano</li>
+    </ul>
+    <h3>Joshua National Park</h3>
+    <ul id="national-parks">
+        <li>789,745 acres big</li>
+        <li>Lowest recorded temperature was 10°F in 1990</li>
+        <li>Highest recorded temperature was 118°F in 1961</li>
+        <li>Highest Eleveation 5,813 feet on Quail Mountain</li>
+    </ul>
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 (function(){
 "use strict";
 
-   $('#highlight-important').click(function(event) {
+// this is the part that isnt finished for exercise 4.2.1
+   
+   $('#show-important').click(function(event) {
         event.preventDefault();
-        $('.important').toggleClass('highlighted');
+        $('dd').toggleClass('invisible');
     });
+
+
+
+// we are grabbing EACH UL and runnign the function.  we have to write in index, element because we are modifying the element (UL) and to get to the element we also have to write index although we arent changing the index.   
+// so the next line we are finding the element (UL) and targeting its .children (the "li"). then we are geting the .first one and changing the css.
+$('ul').each(function(index, element){
+    $(element).children('li').first().css({
+        'font-weight': 'bold'
+    });
+});
+
+
+
+$('li').click(function(clicky){
+    console.log("we are inside click")
+    $(this).parent('ul').css({
+        'display': 'none'
+    });
+
+});
+
 
 
 

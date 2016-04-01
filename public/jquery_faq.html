@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<!-- exercise 4.3.1 -->
+<head>
+
+
+    <title>jquery FAQ </title>
+
+    <style>
+        
+        .invisible {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Here are some frequently asked questions about Yellowstone National Park</h1>
+<dl>
+    <dt>How did Yellowstone get its name?</dt>
+    <dd class="invisible">Yellowstone National Park is named after the Yellowstone River, the major river running through the park. According to French-Canadian trappers in the 1800s, they asked the name of the river from the Minnetaree tribe, who live in what is now eastern Montana. They responded "Mi tse a-da-zi," which literally translates as "Rock Yellow River." (Historians do not know why the Minnetaree gave this name to the river.) The trappers translated this into French as "Roche Jaune" or "Pierre Jaune." In 1797, explorer-geographer David Thomson used the English translation—"Yellow Stone." Lewis and Clark called the Yellowstone River by the French and English forms. Subsequent use formalized the name as "Yellowstone."</dd>
+    
+    <dt>Is Yellowstone the largest national park?</dt>
+    <dd class="invisible">No. More than half of Alaska's national park units are larger, including Wrangell–St. Elias National Park and Preserve, which is the largest unit (13 million acres) in the National Park System. Until 1994, Yellowstone (at 2.2 million acres) was the largest national park in the contiguous United States. That year Death Valley National Monument was expanded and became a national park—it has more than 3 million acres.</dd>
+  
+    <dt>Is Yellowstone the most visited national park?</dt>
+    <dd class="invisible">Yellowstone is in the top five national parks for number of recreational visitors. Great Smoky Mountains National Park has the most—more than 10 million in 2014. The Grand Canyon (4.8 million) and Yosemite (3.8 million) also received more recreational visits than Yellowstone (3.5 million) last year. Visit the website https://irma.nps.gov/Stats/ to find out more details about how many visitors come to our national parks.</dd>
+    
+    <dt>What is the difference between a national park and a national forest?</dt>
+    <dd class="invisible">National parks are administered by the Department of the Interior and national forests by the Department of Agriculture. The National Park Service is mandated to preserve resources unimpaired, while the Forest Service is mandated to wisely manage resources for many sustainable uses. Six national forests surround Yellowstone National Park.</dd>
+  
+    <dt>How many rangers work in Yellowstone?</dt>
+    <dd class="invisible">Approximately 780 people work for the park during the peak summer season. Approximately 355 are permanent employees who stay year-round. Park rangers perform duties in education, resource management, law enforcement, emergency medical services, and backcountry operations. Other park employees perform duties in research, maintenance, management, administration, trail maintenance, fire management, and fee collection.</dd>
+
+    <dt>How do you become a park ranger?</dt>
+    <dd class="invisible">Park rangers have a variety of different duties. Most have a bachelor's degree in a related field, and some may have advanced degrees or additional special training in law enforcement, education, or wildlife management. Park Rangers are federal employees hired by individual parks. Many National Park Service employee begin their careers as volunteers, or as seasonal employees. Hiring is very competitive and is conducted through the Office of Personnel Management website: usajobs.gov. </dd>
+  
+    <dt>Can we swim in rivers and lakes?</dt>
+    <dd class="invisible">Swimming is not recommended, and is occasionally prohibited, because most lakes and streams are dangerously cold. Firehole Canyon, near Madison Junction, has a swimming area popular in summer. Soaking in thermal features is illegal.The area known as the Boiling River, north of Mammoth Hot Springs, allows soaking in the Gardner River near thermal outflow, but not in the feature itself. Soaking is allowed during daylight hours only and at your own risk.</dd>
+    
+    <dt>What is the highest peak in the park?</dt>
+    <dd class="invisible">Eagle Peak in the southeastern part of Yellowstone is the highest at 11,358 feet.</dd>
+  
+    <dt>Why is Yellowstone called a biosphere reserve and a world heritage site?</dt>
+    <dd class="invisible">The United Nations designated Yellowstone National Park as a biosphere reserve and a world heritage site in recognition of the worldwide significance of its natural and cultural resources. These designations have nothing to do with how Yellowstone is managed—the United Nations has no authority to dictate federal land management decisions in the United States—nor do they change the fact that Yellowstone is under the legal authority of the United States of America.</dd>
+  
+    <dt>What is the Continental Divide?</dt>
+    <dd class="invisible">Think of the Continental Divide as the crest of the continent. Theoretically, when precipitation falls on the west side of the Divide, it eventually reaches the Pacific Ocean. When it falls on the east side of the Divide, it eventually reaches the Atlantic Ocean. In Yellowstone (as elsewhere), this ridgeline is not straight. You cross the Continental Divide three times between the South Entrance and the Old Faithful area. Craig Pass is the highest crossing, at 8,262 feet.</dd>
+
+</dl>
+<a href="#" id="show-important">Click this for answers to FAQ's</a>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+   $('#highlight-important').click(function(event) {
+        event.preventDefault();
+        $('.important').toggleClass('highlighted');
+    });
+
+
+
+})();
+
+
+</script>
+</body>
+</html>

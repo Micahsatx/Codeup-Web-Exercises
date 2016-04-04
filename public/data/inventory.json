@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Hammer",
+        "quantity": 25,
+        "brand": "Craftsmen",
+        "categories": [
+            "tool"
+        ],
+        "price": 20
+
+    }, {
+
+        "title": "Drill",
+        "quantity": 5,
+        "brand": "Husky",
+        "categories": [
+            "tool",
+            "powered"
+        ],
+        "price": 100
+
+    }, {
+
+        "title": "Mower",
+        "quantity": 5,
+        "brand": "Black & Decker",
+        "categories": [
+            "tool",
+            "gas",
+            "outdoor"
+        ],
+        "price": 200
+
+    }, {
+
+        "title": "Screwdrivers",
+        "quantity": 25,
+        "brand": "Generic",
+        "categories": [
+            "tool"
+        ],
+        "price": 10
+
+    }, {
+
+        "title": "Power Saw",
+        "quantity": 3,
+        "brand": "Midas",
+        "categories": [
+            "tool",
+            "powered"
+        ],
+        "price": 200
+        
+    }
+]

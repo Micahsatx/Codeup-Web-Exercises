@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <title>Online Store</title>
+
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+
+
+        <button type="refreshButton" onClick="window.location.reload();">Refresh</button>
+    
+
+
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+
+(function(){
+    $.ajax("/data/inventory.json").done(function(data){
+        for (i = 0; i < data.length; i++){
+            var tr = $("<tr>");
+            tr.append("<td>" + data[i].title + "</td>");
+            tr.append("<td>" + data[i].quantity + "</td>");
+            tr.append("<td>" + data[i].brand + "</td>");
+            tr.append("<td>" + data[i].price + "</td>");
+            tr.append("<td>" + data[i].categories + "</td>");
+            $("#insertProducts").append(tr);
+        }
+    });
+
+function refreshPage(){
+    window.location.reload();
+} 
+
+})();
+    
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,17 +1,17 @@
 [
     {
         "title": "Hammer",
-        "quantity": 25,
+        "quantity": 22,
         "brand": "Craftsmen",
         "categories": [
             "tool"
         ],
-        "price": 20
+        "price": 25
 
     }, {
 
         "title": "Drill",
-        "quantity": 5,
+        "quantity": 52,
         "brand": "Husky",
         "categories": [
             "tool",

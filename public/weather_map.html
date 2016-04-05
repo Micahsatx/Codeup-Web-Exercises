@@ -1,0 +1,174 @@
+<html>
+<head>
+    <title>Weather Map Mashup</title>
+    <style type="text/css">
+        #map-canvas {
+            width: 400px;
+            height: 300px;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+
+
+<body>
+
+<div id="map-canvas"></div>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxYW8gKj-HrFFAulJfo6pd1hNAeWAgKRg"></script>
+    <!-- Script to show address on map -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/js/moment.js"></script>
+
+
+
+<form action="this is where it is submitting to">
+City Search:  <input id="lat" type="text" name="Latitude" value=""><br>
+<button id="get-weather">Get Weather</button>
+</form>
+
+
+
+<div class="container" id="forecast">
+</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+// (function() {
+"use strict";
+
+    // Set our map options
+    mapOptions = {
+        // Set the zoom level
+        zoom: 10,
+    };
+
+
+    // Render the map
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    // Init geocoder object--geocoder is for using an address
+    var address = "San Antonio, TX";
+    var geocoder = new google.maps.Geocoder();
+    var mapOptions;
+    var marker = new google.maps.Marker({
+        position: map.center,
+        map: map,
+        animation: google.maps.Animation.DROP
+    });
+
+
+    // Geocode our address
+    geocoder.geocode({ "address": address }, function(results, status) {
+
+       // Check for a successful result
+       if (status == google.maps.GeocoderStatus.OK) {
+
+           // Recenter the map over the address
+           map.setCenter(results[0].geometry.location);
+       } else {
+
+           // Show an error message with the status if our request fails and address is not valid
+           alert("Geocoding was not successful - STATUS: " + status);
+       }
+
+
+    });
+
+
+
+
+
+
+    function loadWeather(city) {
+        // google maps gecode the city to get lat and lng
+        geocoder.geocode({ "address": city }, function(results, status) {
+
+           // Check for a successful result
+           if (status == google.maps.GeocoderStatus.OK) {
+
+               // Recenter the map over the address
+               // when geocode is done, send lat and lng to updateWeather function
+               // results[0].geometry.location.lat()
+               // results[0].geometry.location.lng()
+               updateWeather(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+           } else {
+
+               // Show an error message with the status if our request fails and address is not valid
+               alert("Geocoding was not successful - STATUS: " + status);
+           }
+
+
+        });
+        
+    }
+
+
+
+
+
+    function updateWeather(lat, lng) {
+
+        $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "873b5d0933bf44f1a95e90e5b579896c",
+            lat: lat,
+            lon: lng,
+            units: "imperial",
+            cnt: 3
+        }).done(function(data) {
+            console.log(data);
+            $("#forecast").html("");
+
+            data.list.forEach(function(day) {
+                var dailyMax = Math.round(day.temp.max);
+                var dailyMin = Math.round(day.temp.min);
+                var windSpeed = Math.round(day.speed);
+                var icon = day.weather[0].icon;
+                var div = $('<div class= "col-md-4">');
+                var date = moment(day.dt * 1000).format('MMMM Do YYYY');
+                div.addClass('days');
+                div.append("<h3>"+ date + "</h3>");
+                div.append("<p>" + ' ' + dailyMax + ' ' + '/' + ' ' + dailyMin + " </p>");
+                div.append('<img src="http://openweathermap.org/img/w/'+ day.weather[0].icon+'.png">');
+                div.append("<p>Cloud Conditions: "+ day.weather[0].main +  "</p>");
+                div.append("<p>Wind:" + ' ' + windSpeed + ' ' + 'mph' + "</p>");
+                div.append("<p>Pressure:  " + day.pressure + "</p>");
+
+                $('#forecast').append(div);
+            })
+        });
+    }
+
+    $('#get-weather').click(function(event) {
+        event.preventDefault();
+        // var lat = $('#lat').val();
+        // var lng = $('#lng').val();
+        // updateWeather(lat, lng);
+        var city = $('#lat').val();
+        loadWeather(city);
+    });
+
+    loadWeather('San Antonio, TX');
+
+
+
+
+
+// })();        
+</script>
+
+
+</body>
+</html>
+
+

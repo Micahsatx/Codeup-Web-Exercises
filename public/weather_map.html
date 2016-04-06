@@ -54,19 +54,18 @@ City Search:  <input id="lat" type="text" name="Latitude" value=""><br>
         zoom: 10,
     };
 
-
     // Render the map
-    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    // Init geocoder object--geocoder is for using an address
-    var address = "San Antonio, TX";
-    var geocoder = new google.maps.Geocoder();
-    var mapOptions;
-    var marker = new google.maps.Marker({
-        position: map.center,
-        map: map,
-        animation: google.maps.Animation.DROP
-    });
-
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        // Init geocoder object--geocoder is for using an address
+        var address = "San Antonio, TX";
+        var geocoder = new google.maps.Geocoder();
+        var mapOptions;
+        var marker = new google.maps.Marker({
+            position: map.center,
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP
+        });
 
     // Geocode our address
     geocoder.geocode({ "address": address }, function(results, status) {
@@ -86,10 +85,6 @@ City Search:  <input id="lat" type="text" name="Latitude" value=""><br>
     });
 
 
-
-
-
-
     function loadWeather(city) {
         // google maps gecode the city to get lat and lng
         geocoder.geocode({ "address": city }, function(results, status) {
@@ -101,6 +96,8 @@ City Search:  <input id="lat" type="text" name="Latitude" value=""><br>
                // when geocode is done, send lat and lng to updateWeather function
                // results[0].geometry.location.lat()
                // results[0].geometry.location.lng()
+               map.setCenter(results[0].geometry.location);
+               marker.setPosition(results[0].geometry.location);
                updateWeather(results[0].geometry.location.lat(), results[0].geometry.location.lng())
            } else {
 
@@ -126,7 +123,6 @@ City Search:  <input id="lat" type="text" name="Latitude" value=""><br>
             units: "imperial",
             cnt: 3
         }).done(function(data) {
-            console.log(data);
             $("#forecast").html("");
 
             data.list.forEach(function(day) {
@@ -145,15 +141,24 @@ City Search:  <input id="lat" type="text" name="Latitude" value=""><br>
                 div.append("<p>Pressure:  " + day.pressure + "</p>");
 
                 $('#forecast').append(div);
+                console.log(data)
             })
         });
     }
 
+    marker.addListener('dragend', function(){
+// get the position of the marker
+        var markerPosition = marker.getPosition();
+// get the position of the markers lat / long individually
+        var markerLat = marker.getPosition().lat();
+        var markerLng = marker.getPosition().lng();
+// pass this information into updateWeather.. the function that find the weather
+        updateWeather(markerLat, markerLng)
+
+    });
+
     $('#get-weather').click(function(event) {
         event.preventDefault();
-        // var lat = $('#lat').val();
-        // var lng = $('#lng').val();
-        // updateWeather(lat, lng);
         var city = $('#lat').val();
         loadWeather(city);
     });

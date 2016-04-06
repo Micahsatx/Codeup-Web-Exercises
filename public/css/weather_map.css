@@ -1,0 +1,25 @@
+#map-canvas {
+    width: 100%;
+    height: 300px;
+    margin-top: 15px;
+}
+
+.body{
+    background-color: #3890E8;
+    background-opacity: 0.9;
+}
+.container {
+    background-color: red;
+    border: 4px solid black;
+    background: linear-gradient(#3D6CFF,#4AD5FF);
+    text-align: center;
+}
+.searchBarButton{
+    text-align: center;
+    margin:10px;
+}
+.searchBarInputField {
+    text-align: center;
+    margin: 15px;
+}
+

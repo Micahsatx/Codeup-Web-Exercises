@@ -7,42 +7,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/weather_map.css">
 </head>
-
-
-
-
 <body class="body">
 
-
-<div class="forecastDiv">
-    <div class="container" id="forecast"></div>
-</div>
-
-
+    <div class="forecastDiv">
+        <div class="container" id="forecast"></div>
+    </div>
 
     <div class="searchBarInputField">
         <form id="searchForm">
             City Search:
-            <input class= "searchBar" id="lat" type="text" name="Latitude" value="">
+            <input class= "searchBar" id="city" type="text" name="Latitude" value="">
             <div class="searchBarButton">
                 <button class="searchBar" id="get-weather">Get Weather</button>
             </div>
         </form>
     </div>
 
-
-
-
     <div id="map-canvas">
     </div>
     
-
-
-
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxYW8gKj-HrFFAulJfo6pd1hNAeWAgKRg"></script>
-<!-- portion used to calculate the date.. moments is a webtool -->
+    <!-- portion used to calculate the date.. moments is a webtool -->
     <script src="/js/moment.js"></script>
 
 
@@ -53,103 +40,102 @@
 
 
     mapOptions = {
-// Set the zoom level
+    // Set the zoom level
         zoom: 10,
     };
 
 
 
-// Render the map
+        // Render the map
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-// starts with a location of San Antonio
+        // starts with a location of San Antonio
         var address = "San Antonio, TX";
         var geocoder = new google.maps.Geocoder();
         var mapOptions;
         var marker = new google.maps.Marker({
-//center the map on the marker 
+        //center the map on the marker 
             position: map.center,
-// the new icon i saved/resized
+        // the new icon i saved/resized
             icon: "/img/mario2.png",
             map: map,
-// draggable marker
+        // draggable marker
             draggable: true,
-// marker animation
+        // marker animation
             animation: google.maps.Animation.DROP
         });
 
 
 
 
-// calling the funciton loadWeather runs it which says since i havnt put in a new city san antonio is the default.
+        // calling the funciton loadWeather runs it which says since i havnt put
+        // in a new city san antonio is the default.
         loadWeather(address)
 
     function loadWeather(city) {
-// geocoder is finding the lat/long of the variable address which is = san antonio as default
+    // geocoder is finding the lat/long of the variable address which is = san antonio as default
         geocoder.geocode({ "address": city }, function(results, status) {
 
-// Check for a successful result
+            // Check for a successful result
            if (status == google.maps.GeocoderStatus.OK) {
 
-// set the center of the map to the locatoin provided.  regardless if thats default or searched location 
+                // set the center of the map to the locatoin provided.  
+                //  regardless if thats default or searched location 
                map.setCenter(results[0].geometry.location);
-// set the marker location on the map to the locatoin provided.  regardless if thats default or searched location
+                // set the marker location on the map to the locatoin provided.  
+                // regardless if thats default or searched location
                marker.setPosition(results[0].geometry.location);
-// provide the function updateWeather the discovered lat / long
+                // provide the function updateWeather the discovered lat / long
                updateWeather(results[0].geometry.location.lat(), results[0].geometry.location.lng())
            } else {
 
-// Show an error message with the status if our request fails and address is not valid
+                // Show an error message with the status if our request fails and address is not valid
                alert("Geocoding was not successful - STATUS: " + status);
            }
-
-
         });
         
     }
 
 
-
-
-
-// this is the main function.  this appends the div with weather.
-// it appends it by using lat / lng.  that is calculated in different ways for the search bar, default, and drag and drop.  but all 3 caculate a lat/lng to feed into the function
+    // this is the main function.  this appends the div with weather.
+    // it appends it by using lat / lng.  that is calculated in different ways 
+    //for the search bar, default, and drag and drop.  but all 3 caculate a lat/lng to feed into the function
     function updateWeather(lat, lng) {
-// interact with the API to get the forecast information
+        // interact with the API to get the forecast information
         $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
-// my API ID provided through their website
+            // my API ID provided through their website
             APPID: "873b5d0933bf44f1a95e90e5b579896c",
             lat: lat,
             lon: lng,
-// unit of measure that changes metric to imperial or the rest of the world to america.
+            // unit of measure that changes metric to imperial or the rest of the world to america.
             units: "imperial",
-// index for the first 3 days...  you could change this to find up to 16 days of forecasts
+            // index for the first 3 days...  you could change this to find up to 16 days of forecasts
             cnt: 3
-// .done waits for the page to load before appending the div
+        // .done waits for the page to load before appending the div
         }).done(function(data) {
             $("#forecast").html("");
 
             data.list.forEach(function(day) {
-// rounds the temp so you dont need 5 decimals
+                // rounds the temp so you dont need 5 decimals
                 var dailyMax = Math.round(day.temp.max);
                 var dailyMin = Math.round(day.temp.min);
                 var windSpeed = Math.round(day.speed);
                 var icon = day.weather[0].icon;
-// bootstrap. makes it a decent size
+                // bootstrap. makes it a decent size
                 var div = $('<div class= "col-md-4">');
                 var date = moment(day.dt * 1000).format('MMMM Do YYYY');
-// date in div
+                // date in div
                 div.append("<h3>"+ date + "</h3>");
-// min / max.  degrees symbol was option+shift+8
+                // min / max.  degrees symbol was option+shift+8
                 div.append("<p>" + ' ' + dailyMax + '° ' + '/' + ' ' + dailyMin + '°' +" </p>");
-// weather icons in div
+                // weather icons in div
                 div.append('<img src="http://openweathermap.org/img/w/'+ day.weather[0].icon+'.png">');
-// cloud coverage
+                // cloud coverage
                 div.append("<p>Cloud Conditions: "+ day.weather[0].main +  "</p>");
-// wind speed
+                // wind speed
                 div.append("<p>Wind:" + ' ' + windSpeed + ' ' + 'mph' + "</p>");
-// pressure 
+                // pressure 
                 div.append("<p>Pressure:  " + day.pressure + "</p>");
-// forecast is the
+                // forecast is the
                 $('#forecast').append(div);
                 console.log(data)
             })
@@ -157,37 +143,32 @@
     }
 
 
-
-
-
-
     marker.addListener('dragend', function(){
-// get the position of the marker
+        // get the position of the marker
         var markerPosition = marker.getPosition();
-// get the position of the markers lat / long individually
+        // get the position of the markers lat / long individually
         var markerLat = marker.getPosition().lat();
         var markerLng = marker.getPosition().lng();
-// pass this information into updateWeather.. the function that finds the weather when it has lat / lng
+        // pass this information into updateWeather.. the function that finds the weather when it has lat / lng
         updateWeather(markerLat, markerLng)
-
     });
 
 
 
-// searchForm is the id of the SEARCH FORM.  upon submit it prevents the default of reloading the page and instead just refreshes the information
-   
+    // searchForm is the id of the SEARCH FORM.  upon submit it prevents the default
+    // of reloading the page and instead just refreshes the information
     $('#searchForm').submit(function(event) {
         event.preventDefault();
 
-// declaring that the id of the searchbar (#lat) is equal to the variable city.  Which is later plugged into the loadweather function.  therefore letting us use lat/lng again to get the weather info
-        
-        var city = $('#lat').val();
+        // declaring that the id of the searchbar (#lat) is equal to the variable city. 
+        // Which is later plugged into the loadweather function.  therefore letting us use lat/lng again to get the // weather info
+        var city = $('#city').val();
         loadWeather(city);
     });
 
 
 
-// this is important so that when the page is first loaded it knows the location to get the weather for 
+    // this is important so that when the page is first loaded it knows the location to get the weather for 
     loadWeather('San Antonio, TX');
 
 

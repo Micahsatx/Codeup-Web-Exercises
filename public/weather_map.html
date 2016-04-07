@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="/css/weather_map.css">
 </head>
 <body class="body">
-
+    
+    <img id="konami" src="/img/konamicodedance.gif" alt="w0w n00b" width="812" height="660">
+    
     <div class="forecastDiv">
         <div class="container" id="forecast"></div>
     </div>
@@ -166,11 +168,34 @@
         loadWeather(city);
     });
 
-
-
     // this is important so that when the page is first loaded it knows the location to get the weather for 
     loadWeather('San Antonio, TX');
 
+
+    // KONAMI CODE!!!!!
+    var cheat = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+    var index = 0;
+
+
+    $("#konami").hide();
+    $(document).keydown(function(event){
+        console.log(event.keyCode);
+
+        if (cheat[index] == event.keyCode){
+            index++;
+        } else {
+            index = 0;
+        }
+        if (index == cheat.length) {
+            konamiSuccess();
+            index = 0;
+        }
+    });
+
+    function konamiSuccess() {
+        $("#konami").show();
+    }
+   
 
 
 

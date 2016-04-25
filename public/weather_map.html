@@ -180,18 +180,21 @@
     $("#konami").hide();
     $(document).keydown(function(event){
         console.log(event.keyCode);
-
+        // if the key code is CORRECT move on to the next index
         if (cheat[index] == event.keyCode){
             index++;
+        // if the keycode is WRONG set the index back to index 0
         } else {
             index = 0;
         }
+        // if the index is equal to the entire string then run the success function.
+        // after running the function set the index back to zero
         if (index == cheat.length) {
             konamiSuccess();
             index = 0;
         }
     });
-
+    // success function
     function konamiSuccess() {
         $("#konami").show();
     }

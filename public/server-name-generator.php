@@ -1,8 +1,4 @@
 <?php
-$adjectives = ['miniature', 'stiff', 'thoughtless', 'obtainable', 'measly', 'venomous', 'silly', 'bizarre', 'apathetic', 'scientific' ];
-$nouns = ['dog','nation','fire','scarecrow','jeans', 'snake','science','tail','thunder','ghost'];
-
-$myString = 'hello, world!';
 
 function randomizeAdjectives($adjectives) {
     // this line chooses a random index 0-10 from adjectives array
@@ -27,15 +23,43 @@ function combine($randomNoun, $randomAdjective){
 
 }
 
-// the output of the function must be saved in a variable so it can be used later!
-$returnFromRandomAdj = randomizeAdjectives($adjectives);
-// the output of the function must be saved in a variable so it can be used later!
-$returnFromRandomNoun = randomizeNoun($nouns);
 
-$returnCombine = combine($returnFromRandomNoun, $returnFromRandomAdj);
-// var_dump($returnCombine);
 
+function pageController()
+{
+    // Initialize an empty data array.
+    $data = array();
+
+    // Add data to be used in the html view.
+    $adjectives = ['miniature', 'stiff', 'thoughtless', 'obtainable', 'measly', 'venomous', 'silly', 'bizarre', 'apathetic', 'scientific'];
+    $nouns = ['dog','nation','fire','scarecrow','jeans', 'snake','science','tail','thunder','ghost'];
+    
+    // the output of the function must be saved in a variable so it can be used later!
+    $returnFromRandomAdj = randomizeAdjectives($adjectives);
+    // the output of the function must be saved in a variable so it can be used later!
+    $returnFromRandomNoun = randomizeNoun($nouns);
+
+    $returnCombine = combine($returnFromRandomNoun, $returnFromRandomAdj);
+    $data['returnCombine'] = $returnCombine;
+    return $data;
+}
+// Call the pageController function and extract all the returned array as local variables.
+extract(pageController());
 ?>
 
 
-<h1><?php echo $returnCombine ?></h1>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP + HTML</title>
+    </head>
+    <body>
+        <h1><?= $returnCombine; ?></h1>
+    </body>
+</html>

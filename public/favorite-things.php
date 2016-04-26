@@ -20,7 +20,16 @@ function randomize()
     //combine them with a space
     return $number . " plates of " . $fetchFood . " prepared by a " . $fetchAdj . " " . $fetchChar . PHP_EOL;
 }
-echo randomize();
+
+function pageController()
+{
+    $randomString = randomize();
+    return ['randomString' => $randomString];
+
+}
+extract(pageController());
+
+
 ?>
 
 <html>
@@ -28,6 +37,11 @@ echo randomize();
     <title>Favorite Things</title>
 </head>
 <body>
+<ul>
+
+    <li><?= $randomString; ?></li>
+
+</ul>
 
 </body>
 </html>

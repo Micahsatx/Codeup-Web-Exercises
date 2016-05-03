@@ -1,6 +1,9 @@
 <?php
+require_once '../Input.php';
 
-$count = $_GET['count'];
+// get the count.  starts with ping.php so doesnt need to find if it has $count value yet
+// 
+$count = Input::get('count');
 
 
 ?>
@@ -11,9 +14,10 @@ $count = $_GET['count'];
     <title>PONG</title>
 </head>
 <body>
+    <img src="/img/pingpong.jpg">
 <h1>PONG</h1>
-<p><?= "the count now has a value of $count"; ?></p>
-<a href="ping.php?count=<?= $count + 1?>">Return to Ping</a>
+<p><?= "Score: $count"; ?></p>
+<a href="ping.php?count=<?= $count + 1?>">Hit!</a>
 <a href="ping.php?count=<?= $count = 0 ?>">Whiffffff!</a>
 
 </body>

@@ -1,6 +1,8 @@
 <?php
 session_start();
-require 'functions/functions.php';
+require '../Auth.php';
+require '../Input.php';
+
 
 
 function clearSession()
@@ -13,8 +15,8 @@ function clearSession()
 }
 clearSession();
 
-redirect('login.php');
-
+header('Location: login.php');
+die();
 
 ?>
 

@@ -1,13 +1,22 @@
 <?php
 session_start();
-require 'functions/functions.php';
+require '../Auth.php';
+require '../Input.php';
+
+
+
 
 if(!empty($_POST)){
-    if(inputGet('username') == 'guest' && inputGet('password') == 'password' ){
+    $username = Input::get('username');
+    $password = Input::get('password');
+
+    if(Auth::attempt($username, $password)){
+       
+       
+       Auth::user(); 
+       $_SESSION['logged_in_user'] = Input::get('username');
         
-       $_SESSION['logged_in_user'] = inputGet('username');
-        
-        redirect('authorized.php');
+        header('Location: authorized.php');
     } else {
         echo "Login Failed, Please Try Again";
     }

@@ -1,6 +1,10 @@
 <?php
 session_start();
 require 'functions/functions.php';
+require '../Auth.php';
+
+
+Auth::check();
 
 ?>
 

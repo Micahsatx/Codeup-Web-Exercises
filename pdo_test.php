@@ -1,10 +1,25 @@
 <?php
-define('DB_HOST' , '127.0.0.1');
-define('DB_NAME' , 'employees');
-define('DB_USER' , 'codeup');
-define('DB_PASS' , 'password');
+// test file that is running the main part of the code.  does NOT contain sensative information
+require ('db_credentials.php');
+require ('db_connect.php');
 
-require_once ('db_connect.php');
+$users =  [
+    ['email' => 'jason@codeup.com', 'name' => 'Jason Straughan'],
+    ['email' => 'zach@codeup.com', 'name' => 'Zach Gulde'],
+    ['email' => 'luis@codeup.com', 'name' => 'Luis Lopez'],
+];
 
 
-echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
+
+foreach($users as $user) {
+    echo '-----------------------------------------------' . PHP_EOL;
+    $query = 'INSERT INTO users (name) VALUES ("' . $user['name'] . '", "' . $user['email'] . '")';
+    var_dump($query);
+    // $dbc->exec($query);
+    // var_dump($dbc->lastInsertId());
+};
+
+
+
+
+

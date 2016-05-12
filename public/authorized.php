@@ -1,10 +1,25 @@
 <?php
 session_start();
 require 'functions/functions.php';
-require '../Auth.php';
+require_once '../Auth.php';
 
 
 Auth::check();
+// i think this is missing the page controller?
+
+// function pageController()
+// {
+//     if(!Auth::check()){
+//         header('location: login.php');
+//         exit();
+//     }
+
+//     return [
+//         'username' =. 'guest'
+//     ];
+// }
+// session_start();
+// extract(pageController());
 
 ?>
 

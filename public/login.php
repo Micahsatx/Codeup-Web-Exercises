@@ -5,8 +5,11 @@ require '../Input.php';
 
 
 
-
+// we have to check if the user has submitted something.  this is checking
+// on page load if the fields are NOT empty.  if they are not emtpy run the code
 if(!empty($_POST)){
+    // using the Input class from Input.php  thats why input.php is required
+    // at the top of the page
     $username = Input::get('username');
     $password = Input::get('password');
 
@@ -30,7 +33,7 @@ if(!empty($_POST)){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>POST Example</title>
+    <title>Login Page</title>
 </head>
 <body>
     <form method="POST">

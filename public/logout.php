@@ -4,7 +4,7 @@ require '../Auth.php';
 require '../Input.php';
 
 
-
+// i think this function needs to be removed and replaced with a class Auth something
 function clearSession()
 {
     // clear $_SESSION array

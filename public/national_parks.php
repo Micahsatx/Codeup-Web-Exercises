@@ -49,11 +49,11 @@ function pageController($dbc)
     // send the max to the page so we can use it
     $data['maxCount'] = $maxCount;
     
-    // 
+    // checking to make sure the form has every field filled out.  if it doesnt it should reload form
+    // and alert user of fail.  it however errors out.  it does warn them but forces you to reload the page
     if (Input::has('name') && Input::has('location') && Input::has('date_established') && Input::has('area_in_acres') && Input::has('animal_poop_prevalence') && Input::has('volcano_danger') ) {
-            // user didnt fill in all the fields.  prompt them to do so
-            echo "Please Fill Out Form Completely";
-            // user may proceed...
+           
+            // preparing the data from the form to be binded to the proper fields.
             $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, animal_poop_prevalence, volcano_danger) VALUES (:name, :location, :date_established, :area_in_acres, :animal_poop_prevalence, :volcano_danger )');
             $stmt->bindValue(':name',  Input::get('name'),  PDO::PARAM_STR);
             $stmt->bindValue(':location',  Input::get('location'),  PDO::PARAM_STR);
@@ -78,6 +78,7 @@ extract(pageController($dbc));
     <link rel="stylesheet" href="/css/national_parks.css">
 </head>
 <body>
+    <!-- loops through parks data base and grabs the id's from each park and plugs them into html -->
 <?php foreach ($parks as $park): ?>
 <h3><?= 'Park Name: ' . $park['name'] . PHP_EOL ?> </h3>
 <h3><?= 'Location: ' . $park['location'] . PHP_EOL?> </h3>
@@ -88,20 +89,42 @@ extract(pageController($dbc));
 <h3><?= '------------------------' . PHP_EOL ?> </h3>
 <?php endforeach; ?>
 
-<!-- 
-<form action="new_national_parks.php">
-    <input type="submit" value="Add a New Park">
-</form> -->
-
+<!-- previous button. as long as the count isnt 0 the previous button will be shows -->
 <?php if ($count > 0) { ?>
     <a href="national_parks.php?count=<?= $count - 1 ?>">Previous</a>
 <?php } ?>
 
+<!-- as long as the count isnt equal the the maxcount -1 the next button will show
+, meaning on the final page we wont see the next button because count is equal to
+maxcount -1 -->
 <?php if ($count < $maxCount - 1) { ?>
     <a href="national_parks.php?count=<?= $count + 1 ?>">Next</a>
 <?php } ?>
 
+<!-- form for submitting a new park -->
 <h2>Add a National Park</h2>
+<?php 
+    // this submit button will only work if all fields "has" info in it
+    if (Input::has('submit')) 
+    {
+        // if every field is filled in sumbit button will work
+        if (
+            (Input::has('name') && (Input::get('name')!="")) &&
+            (Input::has('location') && (Input::get('location')!="")) &&
+            (Input::has('date_established') && (Input::get('date_established')!="")) &&
+            (Input::has('area_in_acres') && (Input::get('area_in_acres')!="")) &&
+            (Input::has('animal_poop_prevalence') && (Input::get('animal_poop_prevalence')!="")) &&
+            (Input::has('volcanic_danger') && (Input::get('volcanic_danger')!=""))
+            )
+        {
+            echo "Database Updated!";
+        // if fields are left empty give this error message.  but also error like crazy
+        } else {
+            echo "Please Fill Out the Form Completely!";
+        }
+    }
+?>
+    <!-- where the form is posting to.. (itself) -->
     <form method="POST" action="/national_parks.php">
         <p>
             <input type="text" name="name" placeholder="Park Name: ">
@@ -110,6 +133,7 @@ extract(pageController($dbc));
             <input type="text" name="location" placeholder="Location: ">
         </p>
         <p>
+            <!-- type is date so that is reformats the same as the datatype set in mysql migration file -->
             <input type="date" name="date_established" placeholder="Date: YYYY-MM-DD ">
         </p>
         <p>
@@ -126,7 +150,5 @@ extract(pageController($dbc));
     </form>
 
 
-
-   
 </body>
 </html>

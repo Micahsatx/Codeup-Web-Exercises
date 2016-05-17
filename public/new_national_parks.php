@@ -3,10 +3,8 @@ require ('../Input.php');
 require ('../parks_db_credentials.php');
 require ('../parks_db_connect.php');
 
-    
+function pageController($dbc){
     if (Input::has('name') && Input::has('location') && Input::has('date_established') && Input::has('area_in_acres') && Input::has('animal_poop_prevalence') && Input::has('volcano_danger') ) {
-        // user didnt fill in all the fields.  prompt them to do so
-        echo "Please Fill Out Form Completely";
         // user may proceed...
         $stmt = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, animal_poop_prevalence, volcano_danger) VALUES (:name, :location, :date_established, :area_in_acres, :animal_poop_prevalence, :volcano_danger )');
         $stmt->bindValue(':name',  Input::get('name'),  PDO::PARAM_STR);
@@ -17,14 +15,25 @@ require ('../parks_db_connect.php');
         $stmt->bindValue(':volcano_danger',  Input::get('volcano_danger'),  PDO::PARAM_STR);
 
         $stmt->execute();
-    } else {
-    }
 
-var_dump($_GET);
+        header('location:/national_parks.php');
+        die;
+    } else {
+        $message = "Please Fill Out the Form Completely!";
+    }
+    return ['message' => $message];
+}
+$message = '';
+
+if (!empty($_POST)){
+    extract (pageController($dbc));
+}
+
 ?>
 
 <h2>Add a National Park</h2>
-    <form method="POST" action="/national_parks.php">
+<?= $message ?>
+    <form method="POST" action="/new_national_parks.php">
         <p>
             <input type="text" name="name" placeholder="Park Name: ">
         </p>

@@ -2,8 +2,8 @@
 
 class Log
 {
-    public $fileName;
-    public $handle;
+    private $fileName;
+    private $handle;
     public $currentDate;
     public $currentTime;
     
@@ -11,12 +11,35 @@ class Log
     {
         // make a file name and use a string to say log.2016-05-19.log
         // $this->filename = "$prefix-$currentDate.log";
-        $this->fileName = "$prefix-YYYY-MM-DD.log";
+        $this->setFileName("$prefix-YYYY-MM-DD.log");
 
         // making the connection to the filename specified above
-        $this->handle = fopen($this->fileName, 'a');
+        $this->setHandle(fopen($this->fileName, 'a'));
 
     }
+
+    public function setFileName($fileName)
+    {
+        
+        $this->fileName = (string)$fileName;
+    }
+
+    public function setHandle($handle)
+    {
+        $this->handle = $handle;
+    }
+
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    public function getHandle()
+    {
+        return $this->handle;
+    }
+
+
 
     public function logMessage($logLevel, $message)
     {
